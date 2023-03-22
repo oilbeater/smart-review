@@ -1,0 +1,5 @@
+name: 'Smart Review'
+description: 'Review your code with AI'
+runs:
+  using: 'node12'
+  main: 'index.js'
