@@ -6,9 +6,10 @@ async function run() {
     try {
         const pr = github.context.payload.pull_request;
         const patchUrl = pr.patch_url;
+        core.info('pr patch url is ' + patchUrl)
         const response = await axios.get(patchUrl);
         const patchContent = response.data;
-        console.log('PR Patch Content:', patchContent);
+        core.debug('PR Patch Content: ' + patchContent);
     } catch (error) {
         core.setFailed(error.message);
     }

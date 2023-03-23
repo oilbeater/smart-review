@@ -1,0 +1,17 @@
+name: Print PR Patch Content
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  print-patch-content:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        path: "smart-review"
+    - name: Print patch content
+      uses: ./
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
