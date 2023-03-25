@@ -5,7 +5,8 @@ With this action, you can get feedback on your PR's,
 which can help you catch errors, performance issues and improve the overall quality of your codebase.
 
 This project was inspired by [anc95/ChatGPT-CodeReview](https://github.com/anc95/ChatGPT-CodeReview), 
-the main difference is that it allows customizing the `systemMessage` to adjust the focus and output format of the AI review according to one's own needs.
+the main differences are that it allows customizing the `systemMessage` to adjust the focus and output format of the AI review according to one's own needs. 
+And it can be triggered from a forked pull request.
 
 ## Inputs
 
@@ -21,14 +22,30 @@ the main difference is that it allows customizing the `systemMessage` to adjust 
 You only need to set the secret `OPENAI_API_KEY` in your repo before running the action. The `GITHUB_TOKEN` secret will be set automatically by Github Action.
 
 ```yaml
-uses: oilbeater/smart-review@main
-with:
-  apiKey: ${{ secrets.OPENAI_API_KEY }}
-  githubToken: ${{ secrets.GITHUB_TOKEN }}
+name: Smart Review
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+jobs:
+  review-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test review
+        uses: oilbeater/smart-review@main
+        with:
+          apiKey: ${{ secrets.OPENAI_API_KEY }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-In this example, the action is run using the `OPENAI_API_KEY` and `GITHUB_TOKEN` secrets. 
-The `model`, `temperature`, `top_n`, and `systemMessage` inputs are left at their default values.
+In this example, the action will be triggered upon the opening of a pull request or the pushing of new commits, 
+and will subsequently generate review feedback within the corresponding pull request thread.
+
+*Notice:* If you don't want to use your `OPENAI_API_KEY` for review pr from forked repo, replace `pull_request_target` with `pull_request`.
 
 ## Limitation
 
