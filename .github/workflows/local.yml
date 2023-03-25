@@ -20,10 +20,8 @@ jobs:
       run: |
         cd smart-review
         npm install
-    - name: Print patch content
+    - name: test review
       uses: ./smart-review
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         apiKey: ${{ secrets.OPENAI_API_KEY }}
         githubToken: ${{ secrets.GITHUB_TOKEN }}
