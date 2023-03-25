@@ -20,7 +20,7 @@ jobs:
       run: |
         cd smart-review
         npm install
-    - name: Print patch content
+    - name: test review
       uses: ./smart-review
       with:
         apiKey: ${{ secrets.OPENAI_API_KEY }}
