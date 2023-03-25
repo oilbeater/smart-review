@@ -1,5 +1,5 @@
 name: 'Smart Review'
-description: 'Review your code with AI'
+description: 'Get AI-powered code reviews using OpenAI'
 inputs:
   apiKey:
     description: 'The OpenAI API key'
@@ -26,7 +26,6 @@ inputs:
   systemMessage:
     description: 'The system message send to chatgpt api, you can focus the areas you want to review'
     required: false
-
 outputs:
   time:
     description: 'The time we greeted you'
