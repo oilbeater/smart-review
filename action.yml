@@ -1,5 +1,35 @@
 name: 'Smart Review'
 description: 'Review your code with AI'
+inputs:
+  apiKey:
+    description: 'The OpenAI API key'
+    required: true
+  githubToken:
+    description: 'The github token'
+    required: true
+  model:
+    description: 'The Model used to review code'
+    required: false
+    default: 'gpt-3.5-turbo'
+  temperature:
+    description: 'The Model temperature'
+    required: false
+    default: '0.1'
+  top_n:
+    description: 'The Model top_n'
+    required: false
+    default: '1'
+  debug:
+    description: 'Enable debug mode'
+    required: false
+    default: 'false'
+  systemMessage:
+    description: 'The system message send to chatgpt api, you can focus the areas you want to review'
+    required: false
+
+outputs:
+  time:
+    description: 'The time we greeted you'
 runs:
   using: 'node16'
   main: 'index.js'

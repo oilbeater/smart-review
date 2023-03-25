@@ -1,4 +1,9 @@
 name: Print PR Patch Content
+
+permissions:
+  contents: read
+  pull-requests: write
+
 on:
   pull_request:
     types: [opened, synchronize]
@@ -19,3 +24,6 @@ jobs:
       uses: ./smart-review
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        apiKey: ${{ secrets.OPENAI_API_KEY }}
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
