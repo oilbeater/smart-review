@@ -3,8 +3,12 @@
 This GitHub Action uses OpenAI to provide AI-powered code reviews. 
 With this action, you can get feedback on your PR's, 
 which can help you catch errors, performance issues and improve the overall quality of your codebase.
+Users can also adjust the focus and output format of the review by modifying the `systemMessage`.
+
+An example of AI review feedback looks like this:
 
 ![smart-review](./smart-review.png)
+
 
 This project was inspired by [anc95/ChatGPT-CodeReview](https://github.com/anc95/ChatGPT-CodeReview), 
 the main differences are that it allows customizing the `systemMessage` to adjust the focus and output format of the AI review according to one's own needs. 
