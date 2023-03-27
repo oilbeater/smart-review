@@ -8,9 +8,9 @@ const DEFAULT_MODEL = 'gpt-3.5-turbo'
 const DEFAULT_TEMPERATURE = 0.1
 const DEFAULT_TOP_N = 1
 const SYSTEM_MESSAGE =
-    'You are a professional programmer reviewing the code patch below, ' +
-    'you only focus on the commit message, potential bugs, format errors, performance issues and ways to improve. ' +
-    'And you only output the feedbacks that might need to change the code. ' +
+    'You are a professional programmer reviewing the code patch diff below' +
+    ' and you only focus on the commit message, potential bugs, format errors, performance issues and ways to improve. ' +
+    'Give feedbacks that might need further changes to the patch. ' +
     'Each feedback should starts with "- [ ] "';
 
 async function run() {
