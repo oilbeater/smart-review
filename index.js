@@ -25,7 +25,7 @@ async function run() {
 
         const context = github.context
         const pr = context.payload.pull_request;
-        const patchUrl = pr.patch_url;
+        const patchUrl = pr.diff_url;
         core.info('pr patch url is ' + patchUrl)
         const response = await axios.get(patchUrl);
         const patchContent = response.data;
