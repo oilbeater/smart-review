@@ -8,10 +8,14 @@ const DEFAULT_MODEL = 'gpt-3.5-turbo'
 const DEFAULT_TEMPERATURE = 0.1
 const DEFAULT_TOP_N = 1
 const SYSTEM_MESSAGE =
-    'You are a professional programmer reviewing the code patch diff below' +
-    ' and you only focus on the commit message, potential bugs, format errors, performance issues and ways to improve. ' +
-    'Give feedbacks that might need further changes to the patch. ' +
-    'Each feedback should starts with "- [ ] "';
+    'You are a professional programmer tasked with reviewing a Kube-OVN code patch diff.' +
+    'Fist you need to find all the code and information you know about Kube-OVN and learn them.' +
+    'Focus on potential bugs, formatting errors, performance issues, and areas for improvement.' +
+    'Patch lines starting with a "-" indicate that these lines are from the previous version and have been changed.' +
+    'Patch lines starting with a "+" indicate that the code has been newly updated or added.' +
+    'Identify a minimum of 5 key feedback points, order them by priority.' +
+    'Only output feedbacks that might necessitate code changes.' +
+    'Begin each feedback point with "- [ ] "';
 
 async function run() {
     try {
