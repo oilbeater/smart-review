@@ -11,6 +11,7 @@ const DEFAULT_TOP_N = 1
 async function run() {
     try {
         const apiKey = core.getInput('apiKey', {required: true});
+        const apiBaseUrl = core.getInput('apiBaseUrl', {required: false}) || 'https://api.openai.com/v1';
         const githubToken = core.getInput('githubToken', {required: true});
         const model = core.getInput('model') || DEFAULT_MODEL;
         const temperature = +core.getInput('temperature') || DEFAULT_TEMPERATURE;
@@ -26,6 +27,7 @@ async function run() {
         core.info('pr patch data is ' + patchContent.length);
         const chatAPI = new ChatGPTAPI({
             apiKey: apiKey,
+            apiBaseUrl: apiBaseUrl,
             debug: debug,
             completionParams: {
                 model: model,
@@ -34,6 +36,7 @@ async function run() {
             },
             fetch: fetch,
         });
+    
 
         const SYSTEM_MESSAGE =
             `You are a professional programmer tasked with reviewing a ${context.repo.owner}/${context.repo.repo} code patch diff.` +
