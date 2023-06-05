@@ -7,6 +7,9 @@ inputs:
   githubToken:
     description: 'The github token'
     required: true
+  apiBaseUrl:
+    description: 'The OpenAI API base url'
+    required: false
   model:
     description: 'The Model used to review code'
     required: false
